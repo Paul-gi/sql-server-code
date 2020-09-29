@@ -1,0 +1,52 @@
+/****** SSMS 中 SelectTopNRows 命令的指令碼  ******/  區域變數與if else跟 三方
+declare @uu table(numberr int ,phonee varchar(30))
+insert @uu
+select number,phone
+FROM [119695TestDB].[119695].[test2]
+select * from @uu
+
+delete @uu
+where numberr >=2242
+select*from @uu
+
+declare @bbb int =10
+if @bbb >10
+BEGIN
+update @uu
+set phonee +='3333',numberr +=2187
+select*from @uu
+END
+
+else 
+begin 
+update @uu
+set phonee +='6666',numberr +=11121
+select*from @uu
+end
+
+
+
+--------------------------------------------------------------------------------------------------
+/*單層if else*/.
+
+ if (select sum(title) from [119695TestDB].[119695].[test1] )>100
+  print 'ggggggggggggg'
+  else 
+  print 'aaaaaaaaaaaaa'
+
+-------------------------------------------------------------------------------------------------
+/****** SSMS 中 SelectTopNRows 命令的指令碼  ******/       巢狀if else
+SELECT TOP (1000) [title]
+      ,[birthday]
+      ,[male]
+      ,[number]
+  FROM [119695TestDB].[119695].[test1]
+  if (select sum(title) from [119695TestDB].[119695].[test1] )>100
+  print 'ggggggggggggg'
+  else 
+  begin
+  if (select count(birthday) from [119695TestDB].[119695].[test1])>2
+  print 'aaaaaaaaaaaaa'
+  else
+  print 'rgergergrg'
+  end

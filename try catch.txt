@@ -1,0 +1,32 @@
+ 
+/*raiserror 方法*/
+
+
+begin try
+  raiserror (6666,19,1)with log  --拋出一個錯誤程序--
+  print '沒有重大錯誤'
+  end try
+
+  begin catch
+if error_severity()> 1         /*範例是寫16以上 (差別是層級吧)*/
+print 'GG'+cast(error_number() AS char)
+
+else
+print 'gg了' + error_message()
+  end catch
+
+
+
+-----------------------------------------------------------------
+/*throw 方法*/
+
+begin try
+		throw 51000,'ㄎㄎ',2
+end try
+
+begin catch
+		 throw
+end catch
+
+
+
